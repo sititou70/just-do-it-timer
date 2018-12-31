@@ -1,0 +1,18 @@
+body {
+  font-family: arial, sans-serif
+}
+
+.setting{
+  padding: 0 $unit;
+
+  .setting_low{
+    display: block;
+    margin-bottom: $unit;
+
+    &__label{
+      color: #aaa;
+    }
+  }
+}
+
+
