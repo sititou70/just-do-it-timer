@@ -7,5 +7,6 @@ export default {
     date: null,
     time: null,
   },
+  current: null,
   work_name: "",
 };

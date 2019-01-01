@@ -27,6 +27,11 @@ const reducers = {
     state.work_name = action.value;
     return state;
   },
+  [types.SET_CURRENT](old_state, action){
+    const state = cloneDeep(old_state);
+    state.current = action.date;
+    return state;
+  },
 };
 
 const reducer = (old_state, action) =>
