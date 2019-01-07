@@ -17,6 +17,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const userAlias = require('./alias');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -151,9 +152,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       //my project alias
-      infrastructure: path.resolve(__dirname, "../src/infrastructure/"),
-      store: path.resolve(__dirname, "../src/store/"),
-      ui: path.resolve(__dirname, "../src/ui/"),
+      ...userAlias,
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
