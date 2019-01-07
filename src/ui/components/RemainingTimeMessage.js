@@ -13,9 +13,10 @@ const RemainingTimeMessage = (state) => {
   }
 
   const remaining_time = (deadline - current);
-  const day = 1000 * 60 * 60 * 24;
+  const hour = 1000 * 60 * 60;
+  const day = hour * 24;
   const days = Math.floor(remaining_time / day);
-  const time = new Date(remaining_time - (days * day));
+  const time = new Date(remaining_time - (days * day) - (hour * 9));
 
   return (
     <div
