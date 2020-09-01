@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { QueryParamProvider } from 'use-query-params';
+import { Timer } from './components/Timer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryParamProvider>
+      <Timer />
+    </QueryParamProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
