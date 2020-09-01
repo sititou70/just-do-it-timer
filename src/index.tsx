@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { QueryParamProvider } from 'use-query-params';
 import { Timer } from './components/Timer';
+import { ThemeProvider } from '@material-ui/core';
+import { mui_theme } from './styles/theme';
+import { Global } from '@emotion/core';
+import { global_style } from './styles/global-style';
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryParamProvider>
-      <Timer />
-    </QueryParamProvider>
+    <ThemeProvider theme={mui_theme}>
+      <QueryParamProvider>
+        <Global styles={global_style} />
+        <Timer />
+      </QueryParamProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
