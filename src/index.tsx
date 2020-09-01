@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { mui_theme } from './styles/theme';
 import { Global } from '@emotion/core';
 import { global_style } from './styles/global-style';
+import 'sanitize.css';
 
 ReactDOM.render(
   <React.StrictMode>
