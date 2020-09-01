@@ -5,11 +5,16 @@ import {
   DateTimeParam,
   withDefault,
 } from 'use-query-params';
+
 import { TimerConfig } from '../types';
+import { isValidDate } from '../utils';
+
 import { TimerConfigForm } from './TimerConfigForm';
 import SimpleButtonDialog from './SimpleButtonDialog';
-import styled from '@emotion/styled';
 import { ReactComponent as SettingIcon } from '../assets/setting.svg';
+import TimerCircle from './TimerCircle';
+
+import styled from '@emotion/styled';
 
 export const Timer: FC = () => {
   const [current_time, setCurrentTime] = useState<Date>(new Date());
@@ -22,12 +27,21 @@ export const Timer: FC = () => {
   const setTimerConfig = use_timer_config_params[1];
 
   return (
-    <StyledSimpleButtonDialog title="Config" button_content={<SettingIcon />}>
-      <TimerConfigForm
-        default_value={timer_config}
-        onChange={(config) => setTimerConfig(config, 'replace')}
-      />
-    </StyledSimpleButtonDialog>
+    <>
+      {isValidDate(timer_config.from) && isValidDate(timer_config.to) ? (
+        <TimerCircle
+          current={current_time}
+          from={timer_config.from}
+          to={timer_config.to}
+        />
+      ) : null}
+      <StyledSimpleButtonDialog title="Config" button_content={<SettingIcon />}>
+        <TimerConfigForm
+          default_value={timer_config}
+          onChange={(config) => setTimerConfig(config, 'replace')}
+        />
+      </StyledSimpleButtonDialog>
+    </>
   );
 };
 

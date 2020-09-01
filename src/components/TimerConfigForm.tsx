@@ -11,6 +11,7 @@ import {
 } from '@material-ui/pickers';
 import jaLocale from 'date-fns/locale/ja';
 import styled from '@emotion/styled';
+import { isValidDate } from '../utils';
 
 const DateTimePicker: FC<{
   label: string;
@@ -23,9 +24,6 @@ const DateTimePicker: FC<{
     setSelectedDate(date);
     onChange(date);
   };
-
-  const isValidDate = (value: any): value is Date =>
-    value instanceof Date && !isNaN(value.getTime());
 
   return (
     <div className={className}>

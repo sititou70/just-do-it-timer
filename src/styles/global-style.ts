@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
-import { mui_theme } from './theme';
+import { secondary_color } from './theme';
 
 export const global_style = css`
   body {
-    background: ${mui_theme.palette.background.default};
+    background: ${secondary_color[900]};
   }
 `;
