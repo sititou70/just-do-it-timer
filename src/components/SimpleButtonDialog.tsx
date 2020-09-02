@@ -8,10 +8,11 @@ import styled from '@emotion/styled';
 export const SimpleButtonDialog: FC<{
   title: string;
   button_content: JSX.Element;
+  default_open?: boolean;
   className?: string;
   children: JSX.Element;
-}> = ({ title, button_content, className, children }) => {
-  const [open, setOpen] = useState(false);
+}> = ({ title, button_content, default_open, className, children }) => {
+  const [open, setOpen] = useState<boolean>(default_open || false);
 
   return (
     <div className={className}>

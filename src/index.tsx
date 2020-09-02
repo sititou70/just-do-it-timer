@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { QueryParamProvider } from 'use-query-params';
-import { Timer } from './components/Timer';
+import Timer from './components/Timer';
 import { ThemeProvider } from '@material-ui/core';
 import { mui_theme } from './styles/theme';
 import { Global } from '@emotion/core';

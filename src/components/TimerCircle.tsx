@@ -28,6 +28,7 @@ export const TimerCircle: FC<{
         responsive
         progressColor={secondary_color[700]}
         bgColor={secondary_color[800]}
+        animate={false}
       />
     </div>
   );
@@ -42,6 +43,7 @@ export const StyledTimerCircle = styled(TimerCircle)`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: -1;
 
   svg {
     width: calc(min(100%, 100vh) - 30px);
