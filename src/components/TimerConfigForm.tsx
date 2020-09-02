@@ -14,11 +14,10 @@ import styled from '@emotion/styled';
 import { isValidDate } from '../utils';
 
 const DateTimePicker: FC<{
-  label: string;
   default_date: Date | null;
   className?: string;
   onChange: (date: Date) => void;
-}> = ({ label, default_date, className, onChange }) => {
+}> = ({ default_date, className, onChange }) => {
   const [selected_date, setSelectedDate] = useState<Date | null>(default_date);
   const setDate = (date: Date): void => {
     setSelectedDate(date);
@@ -28,9 +27,6 @@ const DateTimePicker: FC<{
   return (
     <div className={className}>
       <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
-        <Typography className="label" variant="subtitle1">
-          {label}
-        </Typography>
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
@@ -56,12 +52,8 @@ const DateTimePicker: FC<{
     </div>
   );
 };
-const StyledDateTimePicker = styled(DateTimePicker)`
-  > .label {
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
 
+const StyledDatePicker = styled(DateTimePicker)`
   > div + div {
     margin: 0 0.5em;
   }
@@ -76,8 +68,9 @@ const StyledDateTimePicker = styled(DateTimePicker)`
 
 export const TimerConfigForm: FC<{
   default_value: TimerConfig;
+  className?: string;
   onChange: (changes: Partial<TimerConfig>) => void;
-}> = ({ default_value, onChange }) => {
+}> = ({ default_value, className, onChange }) => {
   const [current_value, setCurrentValue] = useState<TimerConfig>(default_value);
   const changeCurrentValue = (changes: Partial<TimerConfig>): void => {
     const changed_value = Object.assign(current_value, changes);
@@ -86,23 +79,43 @@ export const TimerConfigForm: FC<{
   };
 
   return (
-    <>
+    <div className={className}>
+      <Typography className="label" variant="subtitle1">
+        いつから？（作業開始）
+      </Typography>
+      <StyledDatePicker
+        default_date={default_value.from ? default_value.from : null}
+        onChange={(d) => changeCurrentValue({ from: d })}
+      />
+
+      <Typography className="label" variant="subtitle1">
+        何を？
+      </Typography>
       <TextField
         label="イベント名"
         aria-describedby="event-name"
         defaultValue={default_value.event_name}
         onChange={(e) => changeCurrentValue({ event_name: e.target.value })}
       />
-      <StyledDateTimePicker
-        label="いつから？（作業開始）"
-        default_date={default_value.from ? default_value.from : null}
-        onChange={(d) => changeCurrentValue({ from: d })}
-      />
-      <StyledDateTimePicker
-        label="いつまで？（締め切り）"
+
+      <Typography className="label" variant="subtitle1">
+        いつまで？
+      </Typography>
+      <StyledDatePicker
         default_date={default_value.to ? default_value.to : null}
         onChange={(d) => changeCurrentValue({ to: d })}
       />
-    </>
+    </div>
   );
 };
+
+export const StyledTimerConfigForm = styled(TimerConfigForm)`
+  > .label {
+    margin-bottom: 0.5em;
+    &:not(:nth-of-type(1)) {
+      margin-top: 2em;
+    }
+  }
+`;
+
+export default StyledTimerConfigForm;

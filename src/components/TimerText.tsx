@@ -40,14 +40,16 @@ export const TimerText: FC<{
 };
 
 export const StyledTimerText = styled(TimerText)`
+  padding: 1em;
   color: ${mui_theme.palette.text.primary};
-  font-size: 2rem;
+  text-align: center;
+  font-size: calc(1rem + 1vw);
 
   .big {
-    font-size: 5rem;
+    font-size: calc(2rem + 4vw);
   }
   .middle {
-    font-size: 3rem;
+    font-size: calc(1rem + 2vw);
   }
 `;
 

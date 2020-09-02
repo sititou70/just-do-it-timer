@@ -3,3 +3,8 @@ export type TimerConfig = {
   from: Date | null | undefined;
   to: Date | null | undefined;
 };
+
+export type Maxim = {
+  auther: string;
+  text: string;
+};
