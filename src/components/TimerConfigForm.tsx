@@ -99,7 +99,7 @@ export const TimerConfigForm: FC<{
       />
 
       <Typography className="label" variant="subtitle1">
-        いつまで？
+        いつまで？（イベントの締め切り）
       </Typography>
       <StyledDatePicker
         default_date={default_value.to ? default_value.to : null}
