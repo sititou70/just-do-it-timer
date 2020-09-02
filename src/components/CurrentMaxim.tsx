@@ -83,6 +83,7 @@ export const StyledCurrentMaxim = styled(CurrentMaxim)`
   color: ${mui_theme.palette.text.primary};
   font-family: serif;
   font-style: italic;
+  white-space: pre-wrap;
 `;
 
 const Hline = styled.div<{ width_weight: number }>`
